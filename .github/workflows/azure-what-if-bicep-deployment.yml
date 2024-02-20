@@ -14,7 +14,7 @@ jobs:
         with:
           inlineScript: true
           
-      - name: Install az bicep
+      - name: Install Azure CLI Bicep extension
         run: az bicep install
 
       - name: Login to Azure
@@ -23,6 +23,5 @@ jobs:
       - name: Set Azure Subscription
         run: az account set --subscription ${{secrets.SUBSCRIPTION_ID}}
       
-      - name: Azure Deployment
-        run: az deployment group what-if --resource-group ${{secrets.RG_NAME}} --name {deploymentName} --template-file main.bicep --parameters main.bicepparam
-
+      - name: Azure What if deployment
+        run: az deployment group what-if --resource-group ${{secrets.RG_NAME}} --name MyWhatIfDeployment --template-file main.bicep --parameters main.bicepparam
