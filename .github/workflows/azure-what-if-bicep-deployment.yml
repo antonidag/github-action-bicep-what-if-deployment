@@ -23,5 +23,11 @@ jobs:
       - name: Set Azure Subscription
         run: az account set --subscription ${{secrets.SUBSCRIPTION_ID}}
       
-      - name: Azure What if deployment
+      - name: Build Bicep file
+        run: az bicep build --file main.bicep
+      
+      - name: Validate Bicep Template
+        run: az deployment group validate --resource-group ${{secrets.RG_NAME}} --name MyWhatIfDeployment --template-file main.bicep --parameters main.bicepparam
+
+      - name: What if deployment
         run: az deployment group what-if --resource-group ${{secrets.RG_NAME}} --name MyWhatIfDeployment --template-file main.bicep --parameters main.bicepparam
