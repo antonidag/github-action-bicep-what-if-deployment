@@ -20,10 +20,9 @@ jobs:
       - name: Login to Azure
         run: az login --service-principal --username ${{ secrets.AZURE_SP_APP_ID }} --password ${{ secrets.AZURE_SP_PASSWORD }} --tenant ${{ secrets.AZURE_TENANT_ID }}
 
+      - name: Set Azure Subscription
+        run: az account set --subscription ${{secrets.SUBSCRIPTION_ID}}
+      
       - name: Azure Deployment
-        run: |
-          # Add your deployment commands here
-          # For example:
-          # az account set --subsciption {subscriptionID}
-          # az deployment group what-if --resource-group {rgName} --name {deploymentName} --template-file main.bicep --parameters main.bicepparam
+        run: az deployment group what-if --resource-group ${{secrets.RG_NAME}} --name {deploymentName} --template-file main.bicep --parameters main.bicepparam
 
