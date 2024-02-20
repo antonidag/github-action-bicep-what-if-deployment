@@ -16,15 +16,15 @@ jobs:
           
       - name: Install Azure CLI Bicep extension
         run: az bicep install
+      
+      - name: Build Bicep file
+        run: az bicep build --file main.bicep
 
       - name: Login to Azure
         run: az login --service-principal --username ${{ secrets.AZURE_SP_APP_ID }} --password ${{ secrets.AZURE_SP_PASSWORD }} --tenant ${{ secrets.AZURE_TENANT_ID }}
 
       - name: Set Azure Subscription
         run: az account set --subscription ${{secrets.SUBSCRIPTION_ID}}
-      
-      - name: Build Bicep file
-        run: az bicep build --file main.bicep
       
       - name: Validate Bicep Template
         run: az deployment group validate --resource-group ${{secrets.RG_NAME}} --name MyWhatIfDeployment --template-file main.bicep --parameters main.bicepparam
