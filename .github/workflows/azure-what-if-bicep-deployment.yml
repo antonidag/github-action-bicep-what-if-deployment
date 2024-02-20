@@ -18,6 +18,7 @@ jobs:
         run: |
           # Add your deployment commands here
           # For example:
-          # az group create --name myResourceGroup --location westus
-          # az deployment group create --resource-group myResourceGroup --template-file azuredeploy.json
+          # az login
+          # az account set --subsciption {subscriptionID}
+          # az deployment group what-if --resource-group {rgName} --name {deploymentName} --template-file main.bicep --parameters main.bicepparam
 
