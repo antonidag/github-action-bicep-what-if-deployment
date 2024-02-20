@@ -14,11 +14,12 @@ jobs:
       - name: Login to Azure
         run: az login # You may need to authenticate with Azure using appropriate methods
 
+      - name: Install az bicep
+        run: az bicep install
       - name: Azure Deployment
         run: |
           # Add your deployment commands here
           # For example:
-          # az login
           # az account set --subsciption {subscriptionID}
           # az deployment group what-if --resource-group {rgName} --name {deploymentName} --template-file main.bicep --parameters main.bicepparam
 
