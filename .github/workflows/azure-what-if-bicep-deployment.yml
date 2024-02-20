@@ -12,7 +12,7 @@ jobs:
       - name: Set up Azure CLI
         uses: Azure/cli@v1.0.9
         with:
-          inlineScript: az bicep install
+          inlineScript: true
           
       - name: Install az bicep
         run: az bicep install
