@@ -4,6 +4,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: DEV
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -11,11 +12,12 @@ jobs:
       - name: Set up Azure CLI
         uses: Azure/cli@v1.0.9
       
-      - name: Login to Azure
-        run: az login # You may need to authenticate with Azure using appropriate methods
-
       - name: Install az bicep
         run: az bicep install
+
+      - name: Login to Azure
+        run: az login --service-principal --username ${{ secrets.AZURE_SP_APP_ID }} --password ${{ secrets.AZURE_SP_PASSWORD }} --tenant ${{ secrets.AZURE_TENANT_ID }}
+
       - name: Azure Deployment
         run: |
           # Add your deployment commands here
