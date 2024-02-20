@@ -1,0 +1,23 @@
+name: Bicep What if deployment
+on:
+  workflow_dispatch:
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: Set up Azure CLI
+        uses: Azure/cli@v1.0.9
+      
+      - name: Login to Azure
+        run: az login # You may need to authenticate with Azure using appropriate methods
+
+      - name: Azure Deployment
+        run: |
+          # Add your deployment commands here
+          # For example:
+          # az group create --name myResourceGroup --location westus
+          # az deployment group create --resource-group myResourceGroup --template-file azuredeploy.json
+
