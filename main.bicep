@@ -31,7 +31,7 @@ param skuName string = 'Standard_LRS'
 ])
 param accessTier string
 
-resource storageAccount 'Microsoft.Storage/storageAccounts@2019-06-01' = {
+resource storageAccount 'Microsoft.Storage/storageAccounts@2023-01-01' = {
   sku: {
     name: skuName
   }
