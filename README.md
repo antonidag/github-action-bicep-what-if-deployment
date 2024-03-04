@@ -11,6 +11,7 @@ Let's gather our tools:
 ```
 az bicep install
 ```
+## Usage
 __Step 1:__ Login to Azure
 
 ```
